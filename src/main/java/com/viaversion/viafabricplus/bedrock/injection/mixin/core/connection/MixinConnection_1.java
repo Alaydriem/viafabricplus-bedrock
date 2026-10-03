@@ -55,7 +55,7 @@ public abstract class MixinConnection_1 {
     @Inject(method = "initChannel", at = @At("RETURN"))
     private void injectBedrockIntoPipeline(final Channel channel, final CallbackInfo ci) {
         final IConnection mixinConnection = (IConnection) this.val$connection;
-        if (!BedrockProtocolVersion.bedrockLatest.equals(mixinConnection.viaFabricPlus$getTargetVersion())) {
+        if (!BedrockProtocolVersion.BEDROCK_LATEST.equals(mixinConnection.viaFabricPlus$getTargetVersion())) {
             return;
         }
 

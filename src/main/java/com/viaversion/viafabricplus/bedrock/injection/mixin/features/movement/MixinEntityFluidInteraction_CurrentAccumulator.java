@@ -44,13 +44,13 @@ public abstract class MixinEntityFluidInteraction_CurrentAccumulator {
     @Expression("entity instanceof Player")
     @ModifyExpressionValue(method = "applyTo", at = @At("MIXINEXTRAS:EXPRESSION"))
     private boolean normalizeInsteadScale(final boolean original) {
-        return !ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest) && original;
+        return !ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST) && original;
     }
 
     // Dropping the threshold skips the boost small currents would get
     @ModifyConstant(method = "applyTo", constant = @Constant(doubleValue = 0.0045000000000000005, ordinal = 0))
     private double dontScaleSmallValues(final double constant) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             return -1;
         } else {
             return constant;

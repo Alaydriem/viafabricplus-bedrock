@@ -72,7 +72,7 @@ public abstract class MixinServerNameResolver {
                     return new NetherNetInetSocketAddress(netherNetAddress);
                 }
             }));
-        } else if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        } else if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             // Bedrock servers don't use SRV records, so the redirect handler has to be skipped
             cir.setReturnValue(this.resolver.resolve(address));
         }

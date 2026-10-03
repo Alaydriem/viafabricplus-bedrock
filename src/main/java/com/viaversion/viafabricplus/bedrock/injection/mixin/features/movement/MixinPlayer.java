@@ -53,7 +53,7 @@ public abstract class MixinPlayer extends Avatar {
 
     @Redirect(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/core/BlockPos;containing(DDD)Lnet/minecraft/core/BlockPos;"))
     private BlockPos modifyWaterAbovePosition(final double x, final double y, final double z) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             return BlockPos.containing(x, y - 0.9, z);
         } else {
             return BlockPos.containing(x, y, z);
@@ -62,12 +62,12 @@ public abstract class MixinPlayer extends Avatar {
 
     @WrapWithCondition(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;setDeltaMovement(Lnet/minecraft/world/phys/Vec3;)V", ordinal = 0))
     private boolean preventSwimmingMotionWhenJumping(final Player instance, final Vec3 movement) {
-        return !ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest) || !instance.isJumping();
+        return !ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST) || !instance.isJumping();
     }
 
     @Inject(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;getAbilities()Lnet/minecraft/world/entity/player/Abilities;"))
     private void preventJumpingWhenStartedSwimming(final Vec3 input, final CallbackInfo ci) {
-        if (!ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (!ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             return;
         }
 
@@ -83,7 +83,7 @@ public abstract class MixinPlayer extends Avatar {
 
     @Redirect(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;isSwimming()Z"))
     private boolean preventSwimmingResurface(final Player instance) {
-        if (!ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest) || !instance.isSwimming()) {
+        if (!ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST) || !instance.isSwimming()) {
             return instance.isSwimming();
         }
 
@@ -99,7 +99,7 @@ public abstract class MixinPlayer extends Avatar {
 
     @Redirect(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;setDeltaMovement(Lnet/minecraft/world/phys/Vec3;)V", ordinal = 1))
     private void removeFlySlipperiness(final Player instance, final Vec3 movement, @Local(argsOnly = true) final Vec3 input) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest) && input.horizontalDistanceSqr() == 0) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST) && input.horizontalDistanceSqr() == 0) {
             instance.setDeltaMovement(new Vec3(0, movement.y, 0));
         } else {
             instance.setDeltaMovement(movement);

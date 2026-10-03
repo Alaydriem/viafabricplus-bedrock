@@ -13,5 +13,8 @@ viafabricplus = { module = "com.viaversion:viafabricplus", version = "5.1.0" }
 viabedrock = { module = "net.raphimc:ViaBedrock", version = "0.0.31-SNAPSHOT" }
 minecraftauth = { module = "net.raphimc:MinecraftAuth", version = "5.0.2" }
 netty-transport-raknet = { module = "dev.kastle.netty:netty-transport-raknet", version = "1.7.0" }
-netty-transport-nethernet = { module = "org.cloudburstmc.netty:netty-transport-nethernet", version = "2.0.0.CR4-20260922.202324-5" }
-libdatachannel-java-arch-detect = { module = "dev.opencollab:libdatachannel-java-arch-detect", version = "0.24.5.0-20260921.140330-12" }
+netty-transport-nethernet = { module = "org.cloudburstmc.netty:netty-transport-nethernet", version = "2.0.0.CR4-20261001.235918-13" }
+libdatachannel-java-arch-detect = { module = "dev.opencollab:libdatachannel-java-arch-detect", version = "0.24.6.0-20260930.214316-2" }
+junit-bom = { module = "org.junit:junit-bom", version = "6.1.0" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }

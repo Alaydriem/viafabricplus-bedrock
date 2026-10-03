@@ -50,7 +50,7 @@ public abstract class MixinEnderChestBlock {
 
     @Inject(method = "getShape", at = @At("HEAD"), cancellable = true)
     private void changeOutlineShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context, final CallbackInfoReturnable<VoxelShape> cir) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             cir.setReturnValue(viaFabricPlusBedrock$shape);
         }
     }
@@ -58,7 +58,7 @@ public abstract class MixinEnderChestBlock {
     // The method is added to the block by ViaFabricPlus, so this addon can only inject into it
     @Inject(method = "getOcclusionShape", at = @At("HEAD"), cancellable = true)
     private void changeOcclusionShape(final BlockState state, final CallbackInfoReturnable<VoxelShape> cir) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             cir.setReturnValue(SHAPE);
         }
     }

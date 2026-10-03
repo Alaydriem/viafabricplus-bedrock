@@ -15,6 +15,7 @@
     "core.connection.MixinConnectScreen_1",
     "core.connection.MixinConnection",
     "core.connection.MixinConnection_1",
+    "core.connection.MixinResourcePackLoadStateTracker",
     "core.connection.MixinServerNameResolver",
     "core.integration.MixinDebugScreenEntries",
     "core.integration.MixinJoinMultiplayerScreen",

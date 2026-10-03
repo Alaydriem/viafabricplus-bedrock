@@ -35,7 +35,7 @@ public abstract class MixinProtocolCategory {
     @Inject(method = "of", at = @At("HEAD"), cancellable = true)
     private static void categorizeBedrock(final ProtocolVersion version, final CallbackInfoReturnable<ProtocolCategory> cir) {
         // Bedrock shares its version type with the April Fools versions, which would put it into their category
-        if (BedrockProtocolVersion.bedrockLatest.equals(version)) {
+        if (BedrockProtocolVersion.BEDROCK_LATEST.equals(version)) {
             cir.setReturnValue(ProtocolCategory.MODERN);
         }
     }

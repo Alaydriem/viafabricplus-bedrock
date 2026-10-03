@@ -36,7 +36,7 @@ public abstract class MixinProtocolVersion {
         // The name of the Bedrock version changes with every ViaBedrock update, so a name stored by an older
         // build would no longer resolve, and the saved selection would silently be dropped
         if (protocol != null && protocol.startsWith("Bedrock")) {
-            cir.setReturnValue(BedrockProtocolVersion.bedrockLatest);
+            cir.setReturnValue(BedrockProtocolVersion.BEDROCK_LATEST);
         }
     }
 

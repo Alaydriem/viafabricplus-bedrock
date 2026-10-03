@@ -42,7 +42,7 @@ public final class BedrockConnectionUtil {
         ((IServerAddress) (Object) serverAddress).viaFabricPlusBedrock$setNetherNetAddress(address);
 
         final ServerData entry = new ServerData("Bedrock NetherNet " + address, serverAddress.getHost(), ServerData.Type.OTHER);
-        ((IServerData) entry).viaFabricPlus$forceVersion(BedrockProtocolVersion.bedrockLatest);
+        ((IServerData) entry).viaFabricPlus$forceVersion(BedrockProtocolVersion.BEDROCK_LATEST);
 
         ConnectScreen.startConnecting(Minecraft.getInstance().gui.screen(), Minecraft.getInstance(), serverAddress, entry, false, null);
     }

@@ -73,14 +73,14 @@ public abstract class MixinSeaPickleBlock extends Block {
 
     @Inject(method = "getShape", at = @At("HEAD"), cancellable = true)
     private void changeOutlineShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context, final CallbackInfoReturnable<VoxelShape> cir) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             cir.setReturnValue(viaFabricPlusBedrock$shape);
         }
     }
 
     @Override
     public @NonNull VoxelShape getCollisionShape(final @NonNull BlockState state, final @NonNull BlockGetter world, final @NonNull BlockPos pos, final @NonNull CollisionContext context) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             return Shapes.empty();
         } else {
             return super.getCollisionShape(state, world, pos, context);
@@ -89,7 +89,7 @@ public abstract class MixinSeaPickleBlock extends Block {
 
     @Override
     public @NonNull VoxelShape getOcclusionShape(final @NonNull BlockState state) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             return switch (state.getValue(PICKLES)) {
                 case 2 -> SHAPE_TWO;
                 case 3 -> SHAPE_THREE;

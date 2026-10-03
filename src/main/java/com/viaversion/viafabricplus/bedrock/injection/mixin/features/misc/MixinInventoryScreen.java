@@ -42,7 +42,7 @@ public abstract class MixinInventoryScreen {
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void sendBedrockPacket(final CallbackInfo ci) {
-        if (!ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (!ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             return;
         }
 

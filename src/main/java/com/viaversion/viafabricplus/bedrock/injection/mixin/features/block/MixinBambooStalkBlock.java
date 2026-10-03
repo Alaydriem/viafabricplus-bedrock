@@ -58,7 +58,7 @@ public abstract class MixinBambooStalkBlock {
 
     @Inject(method = {"getShape", "getCollisionShape"}, at = @At("HEAD"), cancellable = true)
     private void fixBambooShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context, final CallbackInfoReturnable<VoxelShape> cir) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             final VoxelShape voxelShape = state.getValue(AGE) == AGE_THICK_BAMBOO ? viaFabricPlusBedrock$shape_large : viaFabricPlusBedrock$shape_small;
             cir.setReturnValue(voxelShape.move(state.getOffset(pos)));
         }

@@ -44,7 +44,7 @@ public abstract class MixinCactusBlock {
 
     @Inject(method = "getCollisionShape", at = @At("RETURN"), cancellable = true)
     private void changeCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context, final CallbackInfoReturnable<VoxelShape> cir) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             cir.setReturnValue(viaFabricPlusBedrock$shape);
         }
     }

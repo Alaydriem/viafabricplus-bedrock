@@ -40,7 +40,7 @@ public abstract class MixinProtocolVersionMetadata {
     // The name of the Bedrock version changes with every ViaBedrock update, so it is no key of the metadata file
     @Inject(method = "icon(Lcom/viaversion/viaversion/api/protocol/version/ProtocolVersion;)Lnet/minecraft/resources/Identifier;", at = @At("HEAD"), cancellable = true)
     private static void bedrockIcon(final ProtocolVersion version, final CallbackInfoReturnable<Identifier> cir) {
-        if (BedrockProtocolVersion.bedrockLatest.equals(version)) {
+        if (BedrockProtocolVersion.BEDROCK_LATEST.equals(version)) {
             cir.setReturnValue(viaFabricPlusBedrock$icon);
         }
     }

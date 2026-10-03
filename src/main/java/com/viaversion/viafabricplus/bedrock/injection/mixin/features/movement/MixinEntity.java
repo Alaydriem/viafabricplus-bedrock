@@ -51,7 +51,7 @@ public abstract class MixinEntity {
 
     @Inject(method = "setSwimming", at = @At("HEAD"))
     private void trackSwimming(final boolean swimming, final CallbackInfo ci) {
-        if (!ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (!ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             return;
         }
 
@@ -63,7 +63,7 @@ public abstract class MixinEntity {
 
     @Redirect(method = "makeStuckInBlock", at = @At(value = "FIELD", target = "Lnet/minecraft/world/entity/Entity;stuckSpeedMultiplier:Lnet/minecraft/world/phys/Vec3;", opcode = Opcodes.PUTFIELD))
     private void prioritySlowestMovementMultiplier(final Entity instance, final Vec3 value) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest) && this.stuckSpeedMultiplier != Vec3.ZERO) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST) && this.stuckSpeedMultiplier != Vec3.ZERO) {
             this.stuckSpeedMultiplier = new Vec3(Math.min(this.stuckSpeedMultiplier.x, value.x), Math.min(this.stuckSpeedMultiplier.y, value.y), Math.min(this.stuckSpeedMultiplier.z, value.z));
         } else {
             this.stuckSpeedMultiplier = value;
@@ -73,13 +73,13 @@ public abstract class MixinEntity {
     // Bedrock ignores the box a vehicle would apply to its passengers
     @ModifyExpressionValue(method = "getFluidInteractionBox", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;getVehicle()Lnet/minecraft/world/entity/Entity;"))
     private Entity skipPassengerChanges(final Entity vehicle) {
-        return ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest) ? null : vehicle;
+        return ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST) ? null : vehicle;
     }
 
     // Bedrock inflates the box before deflating it, which is the same as inflating the deflated box
     @ModifyReturnValue(method = "getFluidInteractionBox", at = @At("RETURN"))
     private @Nullable AABB inflateFluidInteractionBox(final @Nullable AABB box) {
-        if (box != null && ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (box != null && ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             return box.inflate(0, -0.4, 0);
         } else {
             return box;

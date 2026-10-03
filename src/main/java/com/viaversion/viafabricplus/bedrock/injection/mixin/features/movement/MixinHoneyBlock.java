@@ -62,14 +62,14 @@ public abstract class MixinHoneyBlock extends Block {
 
     @Inject(method = "getCollisionShape", at = @At("RETURN"), cancellable = true)
     private void changeCollisionShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context, final CallbackInfoReturnable<VoxelShape> cir) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             cir.setReturnValue(viaFabricPlusBedrock$shape);
         }
     }
 
     @Inject(method = "entityInside", at = @At("HEAD"), cancellable = true)
     private void applyBedrockHoneyCollision(final BlockState state, final Level level, final BlockPos pos, final Entity entity, final InsideBlockEffectApplier effectApplier, final boolean isPrecise, final CallbackInfo ci) {
-        if (!ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (!ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             return;
         }
 
@@ -84,7 +84,7 @@ public abstract class MixinHoneyBlock extends Block {
 
     @Override
     public void stepOn(final @NonNull Level world, final @NonNull BlockPos pos, final @NonNull BlockState state, final @NonNull Entity entity) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             final double absoluteY = Math.abs(entity.getDeltaMovement().y);
             if (absoluteY < 0.1 && !entity.isSteppingCarefully()) {
                 final double frictionFactor = 0.4 + absoluteY * 0.2;
@@ -97,17 +97,17 @@ public abstract class MixinHoneyBlock extends Block {
 
     @Override
     public float getFriction() {
-        return ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest) ? 0.8F : super.getFriction();
+        return ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST) ? 0.8F : super.getFriction();
     }
 
     @Override
     public float getSpeedFactor() {
-        return ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest) ? 1F : super.getSpeedFactor();
+        return ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST) ? 1F : super.getSpeedFactor();
     }
 
     @Override
     public float getJumpFactor() {
-        return ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest) ? 0.6F : super.getJumpFactor();
+        return ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST) ? 0.6F : super.getJumpFactor();
     }
 
 }

@@ -42,7 +42,7 @@ public abstract class MixinClientSuggestionProvider {
 
     @Inject(method = {"getOnlinePlayerNames", "getCustomTabSuggestions"}, at = @At("HEAD"), cancellable = true)
     private void returnChatSuggestions(final CallbackInfoReturnable<Collection<String>> cir) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             cir.setReturnValue(this.customCompletionSuggestions);
         }
     }
