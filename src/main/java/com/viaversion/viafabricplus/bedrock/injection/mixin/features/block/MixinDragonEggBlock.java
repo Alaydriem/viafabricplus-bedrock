@@ -52,14 +52,14 @@ public abstract class MixinDragonEggBlock extends Block {
 
     @Inject(method = "getShape", at = @At("RETURN"), cancellable = true)
     private void changeOutlineShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context, final CallbackInfoReturnable<VoxelShape> cir) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             cir.setReturnValue(Shapes.block());
         }
     }
 
     @Override
     public @NonNull VoxelShape getOcclusionShape(final @NonNull BlockState state) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             return SHAPE;
         } else {
             return super.getOcclusionShape(state);

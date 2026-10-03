@@ -52,7 +52,7 @@ public final class BedrockSettings {
         // The vanilla default port can't simply be replaced because a Bedrock server might be running on it,
         // so only addresses without an explicit port are changed
         if (ViaFabricPlusBedrock.impl().settings().replaceDefaultPort().isActive()
-            && Objects.equals(version, BedrockProtocolVersion.bedrockLatest)
+            && Objects.equals(version, BedrockProtocolVersion.BEDROCK_LATEST)
             && !address.contains(":")) {
             return address + ":" + ProtocolConstants.BEDROCK_DEFAULT_PORT;
         } else {

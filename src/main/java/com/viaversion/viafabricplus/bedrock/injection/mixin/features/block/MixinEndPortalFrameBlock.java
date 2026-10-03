@@ -56,7 +56,7 @@ public abstract class MixinEndPortalFrameBlock extends Block {
 
     @Inject(method = "getShape", at = @At("HEAD"), cancellable = true)
     private void changeOutlineShape(final BlockState state, final BlockGetter level, final BlockPos pos, final CollisionContext context, final CallbackInfoReturnable<VoxelShape> cir) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             // The eye doesn't have a different shape on bedrock
             cir.setReturnValue(viaFabricPlusBedrock$shape);
         }
@@ -64,7 +64,7 @@ public abstract class MixinEndPortalFrameBlock extends Block {
 
     @Override
     public @NonNull VoxelShape getOcclusionShape(final @NonNull BlockState state) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             return SHAPE_EMPTY;
         } else {
             return super.getOcclusionShape(state);

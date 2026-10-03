@@ -48,7 +48,7 @@ public abstract class MixinEntityFluidInteraction {
     @Expression("fluidTop < box.minY")
     @ModifyExpressionValue(method = "update", at = @At("MIXINEXTRAS:EXPRESSION"))
     private boolean removeConditional(final boolean original) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             return false; // Equates to true due to the negation in the original code
         } else {
             return original;
@@ -58,7 +58,7 @@ public abstract class MixinEntityFluidInteraction {
     // The fluid height is measured 0.4 below the entity, which is the same as adding 0.4 to the measured height
     @ModifyVariable(method = "update", at = @At("STORE"), name = "entityY")
     private double adjustHeightCalculation(final double entityY) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             return entityY - 0.4;
         } else {
             return entityY;
@@ -68,7 +68,7 @@ public abstract class MixinEntityFluidInteraction {
     // Dropping the threshold skips the scaling of the current in shallow fluids
     @ModifyConstant(method = "update", constant = @Constant(doubleValue = 0.4))
     private double dontScaleCurrent(final double constant) {
-        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.bedrockLatest)) {
+        if (ViaFabricPlus.api().targetVersion().equals(BedrockProtocolVersion.BEDROCK_LATEST)) {
             return -1;
         } else {
             return constant;

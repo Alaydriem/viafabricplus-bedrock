@@ -52,7 +52,7 @@ public abstract class MixinJoinMultiplayerScreen {
         } else {
             version = mixinServerInfo.viaFabricPlus$forcedVersion();
         }
-        if (BedrockProtocolVersion.bedrockLatest.equals(version)) {
+        if (BedrockProtocolVersion.BEDROCK_LATEST.equals(version)) {
             final SocketAddress netherNetAddress = NetherNetAddressParser.parse(input);
             if (netherNetAddress != null) {
                 final ServerAddress address = original.call("nethernet.viafabricplus.localhost");

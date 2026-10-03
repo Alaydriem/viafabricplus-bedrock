@@ -21,7 +21,6 @@
 
 package com.viaversion.viafabricplus.bedrock.protocoltranslator.platform;
 
-import com.viaversion.viafabricplus.bedrock.ViaFabricPlusBedrock;
 import java.io.File;
 import java.util.logging.Logger;
 import net.raphimc.viabedrock.ViaBedrockConfig;
@@ -30,12 +29,6 @@ public final class ViaFabricPlusViaBedrockConfig extends ViaBedrockConfig {
 
     public ViaFabricPlusViaBedrockConfig(final File configFile, final Logger logger) {
         super(configFile, logger);
-    }
-
-    @Override
-    public boolean shouldEnableExperimentalFeatures() {
-        // Moved into the settings GUI, which also changes the default to true
-        return ViaFabricPlusBedrock.impl().settings().experimentalFeatures().isActive();
     }
 
 }

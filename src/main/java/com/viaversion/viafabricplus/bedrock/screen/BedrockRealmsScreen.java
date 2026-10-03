@@ -205,7 +205,7 @@ public final class BedrockRealmsScreen extends VFPScreen {
     private void connect(final RealmsJoinInformation server) {
         final String protocol = server.getNetworkProtocol();
         if (protocol.equalsIgnoreCase(RealmsJoinInformation.PROTOCOL_DEFAULT)) {
-            ConnectionUtil.connect(server.getAddress(), BedrockProtocolVersion.bedrockLatest);
+            ConnectionUtil.connect(server.getAddress(), BedrockProtocolVersion.BEDROCK_LATEST);
         } else if (protocol.equalsIgnoreCase(RealmsJoinInformation.PROTOCOL_NETHERNET)) {
             BedrockConnectionUtil.connectNetherNet(new NetherNetAddress(server.getAddress()));
         } else if (protocol.equalsIgnoreCase(RealmsJoinInformation.PROTOCOL_NETHERNET_JSONRPC)) {

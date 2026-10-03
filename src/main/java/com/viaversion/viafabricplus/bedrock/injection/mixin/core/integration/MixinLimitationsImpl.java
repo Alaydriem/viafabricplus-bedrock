@@ -34,7 +34,7 @@ public abstract class MixinLimitationsImpl {
 
     @Inject(method = "maxChatLength", at = @At("HEAD"), cancellable = true)
     private void bedrockChatLength(final ProtocolVersion version, final CallbackInfoReturnable<Integer> cir) {
-        if (BedrockProtocolVersion.bedrockLatest.equals(version)) {
+        if (BedrockProtocolVersion.BEDROCK_LATEST.equals(version)) {
             cir.setReturnValue(512);
         }
     }

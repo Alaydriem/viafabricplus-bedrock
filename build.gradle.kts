@@ -25,4 +25,12 @@ dependencies {
         exclude(group = "dev.opencollab", module = "libdatachannel-java")
     }
     jarInJar(libs.libdatachannel.java.arch.detect)
+
+    testImplementation(platform(libs.junit.bom))
+    testImplementation(libs.junit.jupiter)
+    testRuntimeOnly(libs.junit.platform.launcher)
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
